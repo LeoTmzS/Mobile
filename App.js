@@ -1,33 +1,23 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { StatusBar } from 'react-native';
+import Home from './src/Telas/Home';
+import Portifolio from './src/Telas/Portifolio';
+import Contato from './src/Telas/Contato';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function App() {
+  const Tab = createNativeBottomTabNavigator();
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', padding: 30 }}>
-
-      <View style={{ height: '40%', justifyContent: 'center', alignItems: 'center' }}>
-        <Image source={require('./img/steam.png')} style={{ width: 220, height: 220, resizeMode: 'contain' }} />
-      </View>
-
-      <View style={{ height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ fontSize: 30, color: '#333333', marginBottom: 15}}>Bem-vindo(a) a Steam!</Text>
-        <Text style={{ fontSize: 18, color: '#170097', lineHeight: 22}}> Explore o universo de jogos mais popular do mundo! </Text>
-      </View>
-
-      <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
-        
-        <View style={{ borderWidth: 1, borderColor: '#cccccc', borderRadius: 30, paddingVertical: 12, width: 120, alignItems: 'center', marginRight: 15 }}>
-          <Text style={{ color: '#00559C', fontSize: 16 }}>Pular</Text>
-        </View>
-
-        <View style={{ backgroundColor: '#00559C', borderRadius: 30, paddingVertical: 12, width: 120, alignItems: 'center' }}>
-          <Text style={{ color: 'white', fontSize: 16 }}>Próximo</Text>
-        </View>
-
-      </View>
-
-    </View>
+    <NavigationContainer>
+        <StatusBar backgroundColor="darkblue" 
+                   barStyle="light-content" />
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Portifolio" component={Portifolio} />
+          <Tab.Screen name="Contato" component={Contato} />
+        </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
 export default App;
